@@ -1,0 +1,21 @@
+{
+    "name": "pi/romba",
+    "description": "Hungry for Roms",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0@dev",
+        "psr/http-client": "^1.0@dev",
+        "masterminds/html5": "^2.7@dev"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0@dev",
+        "php-http/curl-client": "^2.0@dev"
+    },
+    "authors": [
+        {
+            "name": "Jose Leon",
+            "email": "leonjosealonso@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
