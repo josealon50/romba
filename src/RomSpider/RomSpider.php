@@ -1,7 +1,10 @@
 <?php
-namespace RomSpider;
+namespace Bot\RomSpider;
+
+use Bot\Http\Http;
     
 class RomSpider extends Http{
+
     protected $maxPenetration = NULL;
     protected $fetchDelay = NULL;
     protected $allowOffsite = NULL;
@@ -13,7 +16,5 @@ class RomSpider extends Http{
         $this->allowOffsite = $allowOffsite;
 
     } 
-
-
 }
-?>
+

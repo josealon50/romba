@@ -1,5 +1,5 @@
 <?php
-namespace Http;
+namespace Bot\Http;
 
 class Http{
     protected $url = NULL;
@@ -8,7 +8,7 @@ class Http{
        $this->url = $url; 
     }
 
-    function http($target, $ref, $method, $data_array, $incl_head){
+    public function http($target, $ref, $method, $data_array, $incl_head){
         $ch = curl_init();
 
         if(is_array($data_array)){

@@ -17,5 +17,10 @@
             "email": "leonjosealonso@gmail.com"
         }
     ],
+    "autoload" : {
+        "psr-4": {
+            "Bot\\": "src/"
+        }
+    },
     "minimum-stability": "dev"
 }
