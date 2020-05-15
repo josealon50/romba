@@ -46,8 +46,8 @@ class Http{
 
         curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE);   // Cookie management.
         curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE);
-        curl_setopt($ch, CURLOPT_TIMEOUT, CURL_TIMEOUT);    // Timeout
-        curl_setopt($ch, CURLOPT_USERAGENT, WEBBOT_NAME);   // Webbot name
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);    // Timeout
+        curl_setopt($ch, CURLOPT_USERAGENT, 'ROMHUNTER');   // Webbot name
         curl_setopt($ch, CURLOPT_URL, $target);             // Target site
         curl_setopt($ch, CURLOPT_REFERER, $ref);            // Referer value
         curl_setopt($ch, CURLOPT_VERBOSE, FALSE);           // Minimize logs

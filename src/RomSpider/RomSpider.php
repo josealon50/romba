@@ -2,6 +2,7 @@
 namespace Bot\RomSpider;
 
 use Bot\Http\Http;
+use Masterminds\HTML5;
     
 class RomSpider extends Http{
 
@@ -14,7 +15,53 @@ class RomSpider extends Http{
         $this->maxPenetration = $maxPenetration;
         $this->fetchDelay = $fetchDelay;
         $this->allowOffsite = $allowOffsite;
-
     } 
+
+    public function getMaxPenetration(){
+        return $this->maxPenetration;
+    }
+
+    public function getFetchDelay(){
+        return $this-fetchDelay;
+    }
+
+    public function getAllowOffsite(){
+        return $this->allowOffsite;
+    }
+
+    public function http( $url, $mehtod ){
+        return parent::http( $url, 'test', $method, [], '' ); 
+    }
+
+    public function harvestLinks( $html ){
+        $html5 = new HTML5();  
+        $dom = $html5->loadHTML( $html['FILE'] );
+        $urls = $dom->getElementsByTagName('a');
+        foreach( $urls as $url ){
+            $temp = [];
+            $temp[] = trim($url->textContent);
+            $temp[] = $url->getAttribute('href');
+            $links[] = $temp;
+        }
+        return $links;
+    }
+
+    public function isUrlATarget( $url, $allowedKeywords ){
+        foreach( $allowedKeywords as $keyword ){
+            if( strpos( $url, $keyword )){
+                return true;
+            }
+        }
+        return false;
+    }
+    public function isValidTargetTitle( $url, $allowedKeywords ){
+        foreach( $allowedKeywords as $keyword ){
+            if( strpos( $url, $keyword )){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
