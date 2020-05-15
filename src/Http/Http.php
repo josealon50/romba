@@ -67,7 +67,7 @@ class Http{
 
        
     }
-    function split_string($string, $delineator, $desired, $type){
+    public function split_string($string, $delineator, $desired, $type){
         # Case insensitive parse, convert string and delineator to lower case
         $lc_str = strtolower($string);
         $marker = strtolower($delineator);
@@ -94,8 +94,8 @@ class Http{
     }
 
     function return_between($string, $start, $stop, $type){
-        $temp = split_string($string, $start, Config::AFTER, $type);
-        return split_string($temp, $stop, Config::BEFORE, $type);
+        $temp = $this->split_string($string, $start, Config::AFTER, $type);
+        return $this->split_string($temp, $stop, Config::BEFORE, $type);
     }
 
 }

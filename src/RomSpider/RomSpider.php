@@ -33,6 +33,10 @@ class RomSpider extends Http{
         return parent::http( $url, 'test', $method, $data_array, '' ); 
     }
 
+    public function return_between( $html, $start, $stop, $type ){
+        return parent::return_between( $html, $start, $stop, $type );
+    }
+
     public function harvestLinks( $html ){
         $html5 = new HTML5();  
         $dom = $html5->loadHTML( $html );

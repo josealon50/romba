@@ -50,7 +50,7 @@ class SQLiteInsert {
             $sql = 'INSERT INTO roms (system, name, url) VALUES(:system, :name, :url)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':system', $system);
-            $stmt->bindValue(':name', $system);
+            $stmt->bindValue(':name', $name);
             $stmt->bindValue(':url', $url);
             $stmt->execute();
             

@@ -11,12 +11,13 @@ class Config {
 
     const TARGET_KEYWORDS = [ 'ROMS', 'roms', 'ROM', 'rom', 'ISOs', 'ISO', 'isos', 'iso' ];
 
-    const EXCL =  true;
-    const INCL =  false;
     const EXCL_HEAD =  false;
     const INCL_HEAD =  true;
     const BEFORE = true;
     const AFTER =  false;    
+
+    const EXCL =  true;
+    const INCL =  false;
     const COOKIE_FILE = "cookie.txt";
 
     const HEAD = "HEAD";
