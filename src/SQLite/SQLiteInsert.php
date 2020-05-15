@@ -25,11 +25,32 @@ class SQLiteInsert {
      * @param string $projectName
      * @return the id of the new project
      */
-    public function insertSpiderBotLink( $name, $url ) {
+    public function insertSystemURL( $name, $url ) {
         try{
-            $sql = 'INSERT INTO spider_bot_links(name, url) VALUES(:name, :url)';
+            $sql = 'INSERT INTO system (system, url) VALUES(:system, :url)';
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':system', $name);
+            $stmt->bindValue(':url', $url);
+            $stmt->execute();
+            
+            return; 
+        }
+        catch( Exception $e ){
+            var_dump($e);
+        }
+    }
+
+    /**
+     * Insert a new link into the bot link table
+     * @param string $projectName
+     * @return the id of the new project
+     */
+    public function insertRomURL( $system, $name, $url ) {
+        try{
+            $sql = 'INSERT INTO roms (system, name, url) VALUES(:system, :name, :url)';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':system', $system);
+            $stmt->bindValue(':name', $system);
             $stmt->bindValue(':url', $url);
             $stmt->execute();
             

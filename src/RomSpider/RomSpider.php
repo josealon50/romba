@@ -29,13 +29,13 @@ class RomSpider extends Http{
         return $this->allowOffsite;
     }
 
-    public function http( $url, $mehtod ){
-        return parent::http( $url, 'test', $method, [], '' ); 
+    public function http( $url, $ref, $method, $data_array, $incl_head ){
+        return parent::http( $url, 'test', $method, $data_array, '' ); 
     }
 
     public function harvestLinks( $html ){
         $html5 = new HTML5();  
-        $dom = $html5->loadHTML( $html['FILE'] );
+        $dom = $html5->loadHTML( $html );
         $urls = $dom->getElementsByTagName('a');
         foreach( $urls as $url ){
             $temp = [];
@@ -59,6 +59,14 @@ class RomSpider extends Http{
             if( strpos( $url, $keyword )){
                 return true;
             }
+        }
+        return false;
+    }
+
+    public function isDuplicateURL( $query, $table,  $params ){
+        $dup =  $query->query( $table, [], $params ); 
+        if( count($dup) > 0){ 
+            return true;
         }
         return false;
     }

@@ -33,15 +33,24 @@ class SQLiteQuery {
         $stmt .= ' FROM ' . $table . ' ';
         if ( !empty($params) ){
             $stmt .= ' WHERE ';
+            $first = true;
             foreach( $params as $key => $value ){
-                $stmt .= $key . ' = ' . ":" . $value;
+                if( strpos( $value, "'" ) > 0 ){
+                    $value = str_replace( "'", "''", $value );
+                } 
+                if ( $first ){
+                    $stmt .= $key . " = '" . $value . "' ";
+                    $first = false;
+                }
+                else{
+                    $stmt .= ' AND ' . $key . " = '" . $value . "' ";
+                }
             }
         }
-
         $result = $this->pdo->query( $stmt );
+        $arr = [];
         while ($row = $result->fetchArray(\PDO::FETCH_ASSOC)) {
-            var_dump($row);
-            exit();
+            $arr[] = $row;
         }
         return $arr;
 
