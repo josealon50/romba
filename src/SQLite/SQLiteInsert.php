@@ -27,7 +27,7 @@ class SQLiteInsert {
      */
     public function insertSystemURL( $name, $url ) {
         try{
-            $sql = 'INSERT INTO system (system, url) VALUES(:system, :url)';
+            $sql = 'INSERT INTO systems (system, url) VALUES(:system, :url)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':system', $name);
             $stmt->bindValue(':url', $url);

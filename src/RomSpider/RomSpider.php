@@ -50,6 +50,22 @@ class RomSpider extends Http{
         return $links;
     }
 
+    public function getMaxNumberOfPagination( $pagination ){
+        $html5 = new HTML5();  
+        $dom = $html5->loadHTML( $pagination );
+        $pages = $dom->getElementsByTagName('ul');
+        $max = 0;
+        foreach ($pages->item(0)->getElementsByTagName('li') as $page) {
+            if ( ctype_digit($page->nodeValue) ){
+               if ( intval( $page->nodeValue ) > $max ){
+                    $max = intval( $page->nodeValue );
+                }
+            }                
+        }
+        return $max;
+
+    }
+
     public function isUrlATarget( $url, $allowedKeywords ){
         foreach( $allowedKeywords as $keyword ){
             if( strpos( $url, $keyword )){
