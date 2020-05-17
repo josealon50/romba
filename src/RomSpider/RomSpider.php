@@ -41,6 +41,7 @@ class RomSpider extends Http{
         $html5 = new HTML5();  
         $dom = $html5->loadHTML( $html );
         $urls = $dom->getElementsByTagName('a');
+        $links = [];
         foreach( $urls as $url ){
             $temp = [];
             $temp[] = trim($url->textContent);

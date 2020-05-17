@@ -33,7 +33,7 @@ class SQLiteInsert {
             $stmt->bindValue(':url', $url);
             $stmt->execute();
             
-            return; 
+	    return $this->pdo->lastInsertRowID();
         }
         catch( Exception $e ){
             var_dump($e);
@@ -53,13 +53,54 @@ class SQLiteInsert {
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':url', $url);
             $stmt->execute();
+	    return $this->pdo->lastInsertRowID();
             
-            return; 
         }
         catch( Exception $e ){
             var_dump($e);
         }
     }
+    
+    /**
+     * Insert a new link into the bot rom donwload url table
+     * @param string $projectName
+     * @return the id of the new project
+     */
+    public function insertRomDownloadURL( $romId, $url ) {
+        try{
+            $sql = 'INSERT INTO rom_download_url (rom_id,url) VALUES( :rom_id, :url)';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':rom_id', $romId);
+            $stmt->bindValue(':url', $url);
+            $stmt->execute();
+	    return $this->pdo->lastInsertRowID();
+            
+        }
+        catch( Exception $e ){
+            var_dump($e);
+        }
+    }
+
+    /**
+     * Insert a new link into the bot rom donwload url table
+     * @param string $projectName
+     * @return the id of the new project
+     */
+    public function updateDownloadSystems( $systemId ) {
+        try{
+            $sql = "UPDATE systems set download = '0' where id = " . $id;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':rom_id', $romId);
+            $stmt->bindValue(':url', $url);
+            $stmt->execute();
+	    return $this->pdo->lastInsertRowID();
+            
+        }
+        catch( Exception $e ){
+            var_dump($e);
+        }
+    }
+
 
 
 }

@@ -9,8 +9,9 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.0@dev",
-        "php-http/curl-client": "^2.0@dev"
-    },
+        "php-http/curl-client": "^2.0@dev",
+        "php-tidy": "^7.3@dev"
+   },
     "authors": [
         {
             "name": "Jose Leon",
