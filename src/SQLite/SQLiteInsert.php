@@ -88,10 +88,8 @@ class SQLiteInsert {
      */
     public function updateDownloadSystems( $systemId ) {
         try{
-            $sql = "UPDATE systems set download = '0' where id = " . $id;
+            $sql = "UPDATE systems set download = '0' where id = " . $systemId;
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':rom_id', $romId);
-            $stmt->bindValue(':url', $url);
             $stmt->execute();
 	    return $this->pdo->lastInsertRowID();
             
